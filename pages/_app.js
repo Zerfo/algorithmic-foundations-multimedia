@@ -19,12 +19,7 @@ function MyApp({ Component, pageProps }) {
       <Container maxWidth="1800px">
         <Component {...pageProps} />
       </Container>
-      <Typography
-        variant="caption"
-        display="block"
-        className="caption"
-        gutterBottom
-      >
+      <Typography variant="caption" display="block" className="caption">
         © 2021 All rights reserved.
       </Typography>
     </>

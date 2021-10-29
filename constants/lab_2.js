@@ -1,17 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
-import { useCallback, useRef, useEffect, useState } from "react";
+export const code = `import { useCallback, useRef, useEffect, useState } from "react";
 
 import Typography from "@mui/material/Typography";
-import List from "@mui/material/List";
-import ListItemText from "@mui/material/ListItemText";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-
-import { CodeBlock, dracula } from "react-code-blocks";
-
-import { code } from "../../constants/lab_2";
 
 import style from "./style.module.scss";
 
@@ -154,34 +147,7 @@ export function Lab_2() {
   }, [resultRef, getImageData, processImage, imgRef]);
 
   return (
-    <div className={style.container}>
-      <Typography variant="h4" gutterBottom>
-        Лабораторная работа №2 «Видоизменение гистограмм»
-      </Typography>
-      <Typography variant="h6" gutterBottom>
-        Задание
-      </Typography>
-      <Typography component="p">
-        Написать программу построения гистограммы изображения. Предусмотреть
-        возможность загрузки файлов всех основных типов изображений. Провести
-        преобразование гистограммы, реализуя следующие процедуры:
-      </Typography>
-      <List component="nav">
-        <ListItemText
-          primary="1. Просветление изображения. Показать, как изменяется гистограмма на
-разных значениях параметров."
-        />
-        <ListItemText
-          primary="2. Инвертирование изображения.
-Построение гистограмм исходного и итогового изображения."
-        />
-        <ListItemText primary="3. Пороговое изображение. Построение гистограмм исходного и итогового изображения." />
-        <ListItemText
-          primary="4. Изменение контраста. Построение гистограмм исходного и итогового
-изображения."
-        />
-      </List>
-      <Typography variant="h6">Решение</Typography>
+    <>
       <Box className={style.result_container}>
         <Box className={style.result_item}>
           <img
@@ -266,17 +232,6 @@ export function Lab_2() {
           />
         </Box>
       </Box>
-      <Typography variant="h6">Исходный код</Typography>
-      <CodeBlock
-        wrapLines
-        codeBlock={true}
-        language="jsx"
-        theme={dracula}
-        text={code}
-      />
-      {console.log(state)}
-    </div>
+    </>
   );
-}
-
-export default Lab_2;
+}`;

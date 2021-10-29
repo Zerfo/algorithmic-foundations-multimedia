@@ -10,8 +10,8 @@ const labs = [
     title: "Лабораторная №2",
     subtitle: "Видоизменение гистограмм",
     link: "/lab_2",
-    isDisabled: true,
-    isDone: false,
+    isDisabled: false,
+    isDone: true,
   },
   {
     title: "Лабораторная №3",

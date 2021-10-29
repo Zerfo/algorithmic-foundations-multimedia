@@ -20,7 +20,7 @@ import {
 
 import style from "./style.module.scss";
 
-function Lab_1() {
+export function Lab_1() {
   const [color, setColor] = useColor("hex", "#000000");
   const [colors, setColors] = useState({});
   const { hex, rgb, cmyk, xuz, hsb, hsl, lab, yuv } = colors || {};

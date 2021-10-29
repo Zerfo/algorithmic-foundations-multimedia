@@ -2,4 +2,23 @@
   .main {
     margin-top: 16px;
   }
+  & > .selectors {
+    display: flex;
+    align-items: center;
+    & > :nth-child(2) {
+      margin-left: 25px;
+    }
+  }
+}
+
+.result {
+  &_container {
+    display: flex;
+  }
+  &_item {
+    margin-right: 25px;
+    & > p {
+      text-align: center;
+    }
+  }
 }
