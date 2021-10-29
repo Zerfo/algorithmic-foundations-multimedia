@@ -1,0 +1,25 @@
+.container {
+  .main {
+    margin-top: 16px;
+  }
+  .result_container {
+    margin: 20px 0px;
+    display: flex;
+    width: 100%;
+    & > div {
+      border-radius: 0px;
+      background-color: #eaeef3;
+    }
+    .result_colors {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      height: 300px;
+      margin-left: 100px;
+      &_item {
+        margin: 10px 20px;
+        width: 290px;
+      }
+    }
+  }
+}

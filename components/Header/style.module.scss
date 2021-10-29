@@ -1,0 +1,22 @@
+.header {
+  margin-bottom: 25px;
+  position: initial;
+  &_toolbar {
+    display: flex;
+    justify-content: space-between;
+    &_authorname {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      width: 170px;
+    }
+  }
+}
+.link {
+  cursor: pointer;
+}
+.avatar {
+  & > img {
+    object-position: 0 10%;
+  }
+}
