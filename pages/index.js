@@ -5,14 +5,14 @@ import LabCard from "../components/LabCard";
 
 import Labs from "../constants/labs";
 
+import style from "../styles/index.module.scss";
+
 function Home() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={6}>
+      <Grid container spacing={6} className={style.content_container}>
         {Labs.map((lab, labIdx) => (
-          <Grid item xs={2} sm={4} md={4} key={labIdx}>
-            <LabCard {...lab} key={labIdx} />
-          </Grid>
+          <LabCard {...lab} key={labIdx} />
         ))}
       </Grid>
     </Box>

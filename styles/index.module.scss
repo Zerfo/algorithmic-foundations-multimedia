@@ -1,0 +1,7 @@
+@import "../node_modules/sass-mediascreen/mediascreen";
+
+.content_container {
+  @include device(mobile mobile-portrait mobile-landscape) {
+    flex-direction: column;
+  }
+}

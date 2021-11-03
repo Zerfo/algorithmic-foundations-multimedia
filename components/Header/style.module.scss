@@ -1,3 +1,5 @@
+@import "../../node_modules/sass-mediascreen/mediascreen";
+
 .header {
   margin-bottom: 25px;
   position: initial;
@@ -9,11 +11,18 @@
       display: flex;
       justify-content: space-between;
       width: 170px;
+      @include device(mobile mobile-portrait mobile-landscape) {
+        display: none;
+      }
     }
   }
 }
 .link {
   cursor: pointer;
+  @include device(mobile mobile-portrait mobile-landscape) {
+    font-size: 1.1em;
+    line-height: 1.3;
+  }
 }
 .avatar {
   & > img {

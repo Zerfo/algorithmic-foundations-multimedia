@@ -1,5 +1,14 @@
+@import "../../node_modules/sass-mediascreen/mediascreen";
+
 .badge {
   position: absolute;
   right: 10px;
   top: 65px;
+}
+
+.card {
+  @include device(mobile mobile-portrait mobile-landscape) {
+    width: 100%;
+    max-width: 100%;
+  }
 }
