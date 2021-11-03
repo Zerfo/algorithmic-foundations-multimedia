@@ -9,6 +9,6 @@
 .card {
   @include device(mobile mobile-portrait mobile-landscape) {
     width: 100%;
-    max-width: 100%;
+    max-width: 100% !important;
   }
 }

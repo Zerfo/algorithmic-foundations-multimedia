@@ -2,6 +2,6 @@
 
 .content_container {
   @include device(mobile mobile-portrait mobile-landscape) {
-    flex-direction: column;
+    flex-direction: column !important;
   }
 }
