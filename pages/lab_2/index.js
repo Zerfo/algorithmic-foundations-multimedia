@@ -155,10 +155,10 @@ export function Lab_2() {
 
   return (
     <div className={style.container}>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h3" gutterBottom>
         Лабораторная работа №2 «Видоизменение гистограмм»
       </Typography>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         Задание
       </Typography>
       <Typography component="p">
@@ -181,7 +181,7 @@ export function Lab_2() {
 изображения."
         />
       </List>
-      <Typography variant="h6">Решение</Typography>
+      <Typography variant="h4">Решение</Typography>
       <Box className={style.result_container}>
         <Box className={style.result_item}>
           <img
@@ -266,7 +266,7 @@ export function Lab_2() {
           />
         </Box>
       </Box>
-      <Typography variant="h6">Исходный код</Typography>
+      <Typography variant="h4">Исходный код</Typography>
       <CodeBlock
         wrapLines
         codeBlock={true}

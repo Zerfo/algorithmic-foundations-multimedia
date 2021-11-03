@@ -1,12 +1,35 @@
+@import "../../node_modules/sass-mediascreen/mediascreen";
+
 .container {
+  @include device(mobile mobile-portrait mobile-landscape) {
+    & > h3 {
+      font-size: 1.7rem;
+    }
+    & > h4 {
+      font-size: 1.5rem;
+    }
+    & > h5 {
+      font-size: 1.3rem;
+    }
+  }
   .main {
     margin-top: 16px;
   }
   & > .selectors {
     display: flex;
     align-items: center;
+    @include device(mobile mobile-portrait mobile-landscape) {
+      flex-wrap: wrap;
+      & > :nth-child(2) {
+        margin-left: 0px;
+      }
+    }
     & > :nth-child(2) {
       margin-left: 25px;
+
+      @include device(mobile mobile-portrait mobile-landscape) {
+        margin-left: 0px;
+      }
     }
   }
 }
@@ -14,6 +37,9 @@
 .result {
   &_container {
     display: flex;
+    @include device(mobile mobile-portrait mobile-landscape) {
+      flex-wrap: wrap;
+    }
   }
   &_item {
     margin-right: 25px;
