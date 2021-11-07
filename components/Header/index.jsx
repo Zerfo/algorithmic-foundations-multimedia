@@ -14,7 +14,7 @@ import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 
-import ThemeContext from "../Theme";
+import { ThemeContext } from "../Theme";
 
 import style from "./style.module.scss";
 
@@ -36,62 +36,60 @@ function Header(props) {
   const { theme, onChangeTheme } = useContext(ThemeContext);
 
   return (
-    <>
-      <ElevationScroll {...props}>
-        <AppBar className={style.header} position="static">
-          <Toolbar className={style.header_toolbar}>
-            <Link href="/" passHref>
-              <Typography variant="h6" component="div" className={style.link}>
-                Алгоритмические основы мультимедийных технологий
+    <ElevationScroll {...props}>
+      <AppBar className={style.header} position="static">
+        <Toolbar className={style.header_toolbar}>
+          <Link href="/" passHref>
+            <Typography variant="h6" component="div" className={style.link}>
+              Алгоритмические основы мультимедийных технологий
+            </Typography>
+          </Link>
+
+          <div className={style.header_toolbar_right}>
+            {/* <span className={style.header_toolbar_right_icon}>
+              {theme === "light" ? (
+                <LightModeIcon onClick={onChangeTheme} />
+              ) : (
+                <NightlightRoundIcon onClick={onChangeTheme} />
+              )}
+            </span> */}
+
+            <span className={style.header_toolbar_right_icon}>
+              <Link
+                className={style.header_toolbar_right_icon}
+                href="https://github.com/Zerfo/algorithmic-foundations-multimedia"
+                passHref
+              >
+                <a target="_blank">
+                  <GitHubIcon sx={{ width: 32, height: 32 }} />
+                </a>
+              </Link>
+            </span>
+
+            <span className={style.header_toolbar_right_authorname}>
+              <Stack
+                direction="row"
+                spacing={2}
+                className={style.header_toolbar_right_authorname_avatar}
+              >
+                <Avatar
+                  alt="Смекалин Н.Н."
+                  src="static/me.jpg"
+                  sx={{ width: 46, height: 46 }}
+                  className={style.avatar}
+                />
+              </Stack>
+              <Typography
+                component="p"
+                className={style.header_toolbar_right_authorname_name}
+              >
+                Смекалин Н.Н.
               </Typography>
-            </Link>
-
-            <div className={style.header_toolbar_right}>
-              <span className={style.header_toolbar_right_icon}>
-                {theme === "light" ? (
-                  <LightModeIcon onClick={onChangeTheme} />
-                ) : (
-                  <NightlightRoundIcon onClick={onChangeTheme} />
-                )}
-              </span>
-
-              <span className={style.header_toolbar_right_icon}>
-                <Link
-                  className={style.header_toolbar_right_icon}
-                  href="https://github.com/Zerfo/algorithmic-foundations-multimedia"
-                  passHref
-                >
-                  <a target="_blank">
-                    <GitHubIcon sx={{ width: 32, height: 32 }} />
-                  </a>
-                </Link>
-              </span>
-
-              <span className={style.header_toolbar_right_authorname}>
-                <Stack
-                  direction="row"
-                  spacing={2}
-                  className={style.header_toolbar_right_authorname_avatar}
-                >
-                  <Avatar
-                    alt="Смекалин Н.Н."
-                    src="static/me.jpg"
-                    sx={{ width: 46, height: 46 }}
-                    className={style.avatar}
-                  />
-                </Stack>
-                <Typography
-                  component="p"
-                  className={style.header_toolbar_right_authorname_name}
-                >
-                  Смекалин Н.Н.
-                </Typography>
-              </span>
-            </div>
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>
-    </>
+            </span>
+          </div>
+        </Toolbar>
+      </AppBar>
+    </ElevationScroll>
   );
 }
 

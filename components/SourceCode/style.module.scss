@@ -1,0 +1,9 @@
+@import "../../node_modules/sass-mediascreen/mediascreen";
+
+.title {
+  &_container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}

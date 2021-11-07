@@ -13,10 +13,12 @@ export function hex2rgb(hex) {
 }
 
 export function rgb2hex(rgb) {
-  let y = rgb.match(/\d+/g).map(function (x) {
-    return parseInt(x).toString(16).padStart(2, "0");
-  });
-  return y.join("").toUpperCase();
+  return rgb
+    .map(function (x) {
+      return ("0" + Math.max(0, Math.min(255, x)).toString(16)).slice(-2);
+    })
+    .join("")
+    .toUpperCase();
 }
 
 export function hex2cmyk(hex) {
@@ -183,10 +185,12 @@ export const functions = [
   {
     title: "RGB => HEX",
     func: `function rgb2hex(rgb) {
-      let y = rgb.match(/\d+/g).map(function (x) {
-        return parseInt(x).toString(16).padStart(2, "0");
-      });
-      return y.join("").toUpperCase();
+      return rgb
+        .map(function (x) {
+          return ("0" + Math.max(0, Math.min(255, x)).toString(16)).slice(-2);
+        })
+        .join("")
+        .toUpperCase();
     }`,
   },
   {

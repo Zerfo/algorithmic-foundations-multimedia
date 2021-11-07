@@ -11,6 +11,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 
 import { CodeBlock, dracula } from "react-code-blocks";
 
+import SourceCode from "../../components/SourceCode";
+
 import { code } from "../../constants/lab_2";
 
 import style from "./style.module.scss";
@@ -266,15 +268,7 @@ export function Lab_2() {
           />
         </Box>
       </Box>
-      <Typography variant="h4">Исходный код</Typography>
-      <CodeBlock
-        wrapLines
-        codeBlock={true}
-        language="jsx"
-        theme={dracula}
-        text={code}
-      />
-      {console.log(state)}
+      <SourceCode title="Исходный код" func={code} />
     </div>
   );
 }

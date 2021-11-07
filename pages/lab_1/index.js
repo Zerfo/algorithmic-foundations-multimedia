@@ -1,11 +1,12 @@
-import { Fragment, useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect } from "react";
 
-import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
-import { CodeBlock, dracula } from "react-code-blocks";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
+
+import SourceCode from "../../components/SourceCode";
 
 import {
   hex2rgb,
@@ -137,16 +138,7 @@ export function Lab_1() {
         Исходный код функций
       </Typography>
       {functions.map(({ title, func }, funcId) => (
-        <Fragment key={funcId}>
-          <Typography variant="h5">{title}</Typography>
-          <CodeBlock
-            wrapLines
-            codeBlock={true}
-            language="jsx"
-            theme={dracula}
-            text={func}
-          />
-        </Fragment>
+        <SourceCode key={funcId} title={title} func={func} />
       ))}
     </div>
   );
