@@ -9,8 +9,6 @@ import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
-import { CodeBlock, dracula } from "react-code-blocks";
-
 import SourceCode from "../../components/SourceCode";
 
 import { code } from "../../constants/lab_2";
