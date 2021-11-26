@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 
 import LabCard from "../components/LabCard";
@@ -11,7 +10,6 @@ import style from "../styles/index.module.scss";
 function Home() {
   return (
     <>
-      <CssBaseline />
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={6} className={style.content_container}>
           {Labs.map((lab, labIdx) => (

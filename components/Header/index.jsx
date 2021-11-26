@@ -1,4 +1,4 @@
-import { cloneElement, useContext } from "react";
+import { cloneElement } from "react";
 
 import Link from "next/link";
 
@@ -9,12 +9,8 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 
 import GitHubIcon from "@mui/icons-material/GitHub";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-
-import { ThemeContext } from "../Theme";
 
 import style from "./style.module.scss";
 
@@ -33,8 +29,6 @@ function ElevationScroll(props) {
 }
 
 function Header(props) {
-  const { theme, onChangeTheme } = useContext(ThemeContext);
-
   return (
     <ElevationScroll {...props}>
       <AppBar className={style.header} position="static">
@@ -46,14 +40,6 @@ function Header(props) {
           </Link>
 
           <div className={style.header_toolbar_right}>
-            {/* <span className={style.header_toolbar_right_icon}>
-              {theme === "light" ? (
-                <LightModeIcon onClick={onChangeTheme} />
-              ) : (
-                <NightlightRoundIcon onClick={onChangeTheme} />
-              )}
-            </span> */}
-
             <span className={style.header_toolbar_right_icon}>
               <Link
                 className={style.header_toolbar_right_icon}
