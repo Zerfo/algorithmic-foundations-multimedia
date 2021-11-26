@@ -18,14 +18,14 @@ const labs = [
     subtitle: "Реализация алгоритма кодирования повторов (RLE)",
     link: "/lab_3",
     isDisabled: false,
-    isDone: false,
+    isDone: true,
   },
   {
     title: "Лабораторная №4",
     subtitle: "Алгоритм LZW",
     link: "/lab_4",
-    isDisabled: true,
-    isDone: false,
+    isDisabled: false,
+    isDone: true,
   },
   {
     title: "Лабораторная №5",

@@ -40,10 +40,6 @@ export function decode(data) {
   return uncompressed;
 }
 
-export function byteCount(s) {
-  return encodeURI(s).split(/%..|./).length - 1;
-}
-
 export const functions = [
   {
     title: "Encode",

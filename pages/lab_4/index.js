@@ -9,19 +9,19 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 import SourceCode from "../../components/SourceCode";
 
-import { encode, decode, functions } from "../../util/RLE";
+import { encode, decode, functions } from "../../util/LZW";
 import { byteCount } from "../../util/byteCount";
 
 import style from "./style.module.scss";
 
-export function Lab_3() {
+export function Lab_4() {
   const [state, setState] = useState();
   const { encoded, decoded } = state || {};
 
   const onEncode = useCallback(
     (value) =>
       setState((oldState) => {
-        const rezult = encode(value.split("")).join("");
+        const [rezult, logs] = value?.length > 0 ? encode(value) : ["", []];
 
         const bits_before = byteCount(value);
         const bits_after = byteCount(rezult);
@@ -38,34 +38,7 @@ export function Lab_3() {
             bits_before,
             bits_after,
             compression,
-          },
-        };
-      }),
-    []
-  );
-
-  const onDecode = useCallback(
-    (value) =>
-      setState((oldState) => {
-        const rezult = decode(
-          value.split("").map((i, id) => (id % 2 === 0 ? +i : i))
-        ).join("");
-
-        const bits_before = byteCount(value);
-        const bits_after = byteCount(rezult);
-        const compression = (
-          ((bits_before - bits_after) / bits_before) *
-          100
-        ).toFixed(2);
-
-        return {
-          ...oldState,
-          decoded: {
-            initial: value,
-            rezult,
-            bits_before,
-            bits_after,
-            compression,
+            logs: [...logs],
           },
         };
       }),
@@ -75,22 +48,22 @@ export function Lab_3() {
   return (
     <div className={style.container}>
       <Typography variant="h3" gutterBottom>
-        Лабораторная работа №3 «Реализация алгоритма кодирования повторов (RLE)»
+        Лабораторная работа №4 «Алгоритм LZW»
       </Typography>
       <Typography variant="h4" gutterBottom>
         Задание
       </Typography>
       <Typography component="p">
-        Необходимо разработать приложение, получающее на входе
-        последовательность чисел (в диапазоне от 0 до 255) или букв (вводятся с
-        клавиатуры или читается из файла), и возвращающего две
-        последовательности: последовательность символов, закодированную с
-        помощью алгоритма кодирования длин серий, и последовательность символов,
-        полученную из первой путем декодирования.
+        Реализовать программу для LZW кодирования и декодирования текстовой
+        информации и информации об изображении (например последовательное
+        указание цветов пикселей изображения).
       </Typography>
       <Typography component="p">
-        Необходимо реализовать алгоритм RLE для цепочек повторяющихся символов
-        различной длины (1, 2, 3, 4).
+        В программе предусмотреть вывод словаря и шагов сжатия и декодирования.
+      </Typography>
+      <Typography component="p">
+        Количество символов входного алфавита заранее не известно, текст
+        вводится пользователем.
       </Typography>
       <Typography component="p">
         Необходимо вывести служебную информацию:
@@ -125,30 +98,27 @@ export function Lab_3() {
             <Typography component="p">
               Степень компрессии: {encoded?.compression}%
             </Typography>
-          </>
-        )}
-      </div>
-      <Typography variant="h5">Декодирование</Typography>
-      <div className={style.decode_encode_container}>
-        <div className={style.decode_encode_container_inputs}>
-          <TextField
-            label="Исходная строка"
-            onChange={({ target }) => onDecode(target.value)}
-          />
-          <ArrowForwardIcon className={style.icon} />
-          <TextField label="Результат" disabled value={decoded?.rezult || ""} />
-        </div>
-        {decoded?.bits_before && (
-          <>
-            <Typography component="p">
-              Кол-во бит до сжатия: {decoded?.bits_before}
-            </Typography>
-            <Typography component="p">
-              Кол-во бит после сжатия: {decoded?.bits_after}
-            </Typography>
-            <Typography component="p">
-              Степень компрессии: {decoded?.compression}%
-            </Typography>
+            <table border="1">
+              <tr>
+                <th rowSpan="2">Текущая строка</th>
+                <th rowSpan="2">Текущий символ</th>
+                <th rowSpan="2">Следующий символ</th>
+                <th colSpan="2">Вывод</th>
+                <th rowSpan="2">Словарь</th>
+              </tr>
+              <tr>
+                <th>Код</th>
+                <th>Биты</th>
+              </tr>
+              {console.log(encoded?.logs)}
+              {encoded?.logs?.map((log, idx) => (
+                <tr key={idx}>
+                  {log.map((itm, idx) => (
+                    <td key={idx}>{itm}</td>
+                  ))}
+                </tr>
+              ))}
+            </table>
           </>
         )}
       </div>
@@ -160,4 +130,4 @@ export function Lab_3() {
   );
 }
 
-export default Lab_3;
+export default Lab_4;
