@@ -17,7 +17,7 @@ const labs = [
     title: "Лабораторная №3",
     subtitle: "Реализация алгоритма кодирования повторов (RLE)",
     link: "/lab_3",
-    isDisabled: true,
+    isDisabled: false,
     isDone: false,
   },
   {
