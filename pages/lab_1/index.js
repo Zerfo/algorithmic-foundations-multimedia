@@ -1,12 +1,16 @@
 import { useCallback, useState, useEffect } from "react";
 
-import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
 
 import SourceCode from "../../components/SourceCode";
+
+import Autocolors from './autocolors';
+import Handlecolors from './handlecolors';
 
 import {
   hex2rgb,
@@ -16,6 +20,7 @@ import {
   rgb2hsl,
   rgb2lab,
   rgb2yuv,
+  rgb2hsv,
   functions,
 } from "../../util/functions";
 
@@ -24,12 +29,14 @@ import style from "./style.module.scss";
 export function Lab_1() {
   const [color, setColor] = useColor("hex", "#000000");
   const [colors, setColors] = useState({});
-  const { hex, rgb, cmyk, xuz, hsb, hsl, lab, yuv } = colors || {};
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     const hex = "#000000";
     const rgb = hex2rgb(hex);
+    const hsv = rgb2hsv(rgb.split(','))
     setColors({
+      hsv,
       hex: hex,
       rgb: rgb,
       cmyk: hex2cmyk(hex),
@@ -39,13 +46,15 @@ export function Lab_1() {
       lab: rgb2lab(rgb),
       yuv: rgb2yuv(rgb),
     });
-  }, []);
+  }, [checked]);
 
   const onChangeColor = useCallback(
     (color) => {
       const { hex } = color;
       const rgb = hex2rgb(hex);
+      const hsv = rgb2hsv(rgb.split(','))
       setColors({
+        hsv,
         hex: hex,
         rgb: rgb,
         cmyk: hex2cmyk(hex),
@@ -57,7 +66,7 @@ export function Lab_1() {
       });
       setColor(color);
     },
-    [setColor]
+    []
   );
 
   return (
@@ -81,6 +90,7 @@ export function Lab_1() {
       <Typography variant="h4" gutterBottom>
         Решение
       </Typography>
+      <FormControlLabel control={<Switch value={checked} onChange={({ target }) => setChecked(target.checked)}/>} label="Ручной ввод" />
       <div className={style.result_container}>
         <ColorPicker
           width={456}
@@ -91,48 +101,7 @@ export function Lab_1() {
           hideRGB
           hideHEX
         />
-        <div className={style.result_colors}>
-          <TextField
-            className={style.result_colors_item}
-            label="HEX"
-            value={hex}
-          />
-          <TextField
-            className={style.result_colors_item}
-            label="RGB"
-            value={rgb}
-          />
-          <TextField
-            className={style.result_colors_item}
-            label="CMYK"
-            value={cmyk}
-          />
-          <TextField
-            className={style.result_colors_item}
-            label="XYZ"
-            value={xuz}
-          />
-          <TextField
-            className={style.result_colors_item}
-            label="HSB"
-            value={hsb}
-          />
-          <TextField
-            className={style.result_colors_item}
-            label="HSL"
-            value={hsl}
-          />
-          <TextField
-            className={style.result_colors_item}
-            label="LAB"
-            value={lab}
-          />
-          <TextField
-            className={style.result_colors_item}
-            label="YUV"
-            value={yuv}
-          />
-        </div>
+        {!checked ? <Autocolors {...colors} /> : <Handlecolors color={color} setColor={onChangeColor} />}
       </div>
       <Typography variant="h4" gutterBottom>
         Исходный код функций

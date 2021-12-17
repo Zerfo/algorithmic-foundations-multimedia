@@ -12,6 +12,16 @@ export function hex2rgb(hex) {
   return x.toString();
 }
 
+function modifyHex(hex) {
+  if (hex.length == 4) {
+    hex = hex.replace('#', '');
+  }
+  if (hex.length == 3) {
+    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+  }
+  return hex;
+}
+
 export function rgb2hex(rgb) {
   return rgb
     .map(function (x) {
@@ -167,6 +177,27 @@ export function rgb2yuv(rgb) {
   return `${y}, ${u}, ${v}`;
 }
 
+export function rgb2hsv(rgb){
+	var r = rgb[0] / 255;
+	var g = rgb[1] / 255;
+	var b = rgb[2] / 255;
+	var max = Math.max(r, g, b), min = Math.min(r, g, b);
+	var h, s, v = max;
+	var d = max - min;
+	s = max == 0 ? 0 : d / max;
+	if(max == min) {
+		h = 0;
+	} else {
+		switch(max){
+			case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+			case g: h = (b - r) / d + 2; break;
+			case b: h = (r - g) / d + 4; break;
+		}
+		h /= 6;
+	}
+	return [h.toFixed(2), s.toFixed(2), v.toFixed(2)];
+}
+
 export const functions = [
   {
     title: "HEX => RGB",
@@ -225,6 +256,29 @@ export const functions = [
 
       return 'computedC.toFixed(2), computedM.toFixed(2)}, computedY.toFixed(2), computedK.toFixed(2)';
     }`,
+  },
+  {
+    title: "RGB => HSV",
+    func: `function rgb2hsv(rgb){
+      var r = rgb[0] / 255;
+      var g = rgb[1] / 255;
+      var b = rgb[2] / 255;
+      var max = Math.max(r, g, b), min = Math.min(r, g, b);
+      var h, s, v = max;
+      var d = max - min;
+      s = max == 0 ? 0 : d / max;
+      if(max == min) {
+        h = 0;
+      } else {
+        switch(max){
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+      return [h, s, v];
+    }`
   },
   {
     title: "RGB => XYZ",
